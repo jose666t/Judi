@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Para Judi ✨ | Algo Especial</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,600;1,700&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Outfit', 'sans-serif'],
+            serif: ['Playfair Display', 'serif'],
+          },
+          animation: {
+            'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'float': 'float 4s ease-in-out infinite',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-6px)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* FONDO OSCURO ABSOLUTO Y LEGIBILIDAD */
+    body {
+      background-color: #09060f !important; 
+      color: #ffffff;
+      overflow-x: hidden;
+      -webkit-tap-highlight-color: transparent;
+    }
+    
+    /* Gradientes cósmicos estables (no borran el fondo) */
+    .bg-cosmic {
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(244, 63, 94, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 85% 85%, rgba(168, 85, 247, 0.12) 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(225, 29, 72, 0.05) 0%, transparent 60%);
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    /* Tarjetas de Máximo Contraste para Celulares */
+    .card-high-contrast {
+      background-color: rgba(22, 17, 32, 0.95);
+      border: 1px solid #332646;
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.8);
+    }
+    
+    .card-hot-contrast {
+      background: linear-gradient(145deg, rgba(37, 14, 28, 0.95) 0%, rgba(23, 14, 34, 0.95) 100%);
+      border: 1px solid #f43f5e;
+      box-shadow: 0 10px 30px -10px rgba(244, 63, 94, 0.2);
+    }
+
+    /* Sombras para textos principales */
+    .text-shadow-glow {
+      text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #09060f;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #f43f5e;
+      border-radius: 999px;
+    }
+  </style>
+</head>
+<body class="bg-cosmic font-sans min-h-screen relative antialiased selection:bg-rose-500 selection:text-white">
+
+  <!-- REPRODUCTOR DE MÚSICA ROMÁNTICA (Múltiples fuentes 100% libres de derechos y seguras) -->
+  <audio id="romanticMusic" loop preload="metadata">
+    <!-- Fuente 1: Guitarra Acústica Romántica (Internet Archive - Súper Estable) -->
+    <source src="https://ia800109.us.archive.org/16/items/AcousticBreeze/AcousticBreeze.mp3" type="audio/mpeg">
+    <!-- Fuente 2: Chopin Nocturne (Wikimedia Commons - Fallback de emergencia) -->
+    <source src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Chopin_Nocturne_Op_9_No_2_E_Flat_Major_-_Vadim_Chaimovich.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Partículas de fondo animadas -->
+  <canvas id="particlesCanvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
+
+  <!-- Barra de navegación fija -->
+  <nav class="fixed top-0 left-0 right-0 z-40 px-4 py-3 bg-[#09060f]/90 backdrop-blur-md border-b border-white/10 shadow-lg">
+    <div class="max-w-4xl mx-auto flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <span class="text-2xl font-serif font-black bg-gradient-to-r from-rose-400 via-pink-300 to-amber-200 bg-clip-text text-transparent">
+          Judi ✨
+        </span>
+        <span class="inline-block w-2.5 h-2.5 rounded-full bg-rose-500 animate-ping"></span>
+      </div>
+
+      <!-- Botón de música romántica -->
+      <button id="musicToggleBtn" onclick="toggleRomanticMusic()" class="px-4 py-1.5 rounded-full text-xs font-bold bg-rose-950/80 border border-rose-400/60 text-rose-200 flex items-center gap-2 hover:bg-rose-900 transition shadow-md">
+        <span id="musicIcon">🎵</span>
+        <span id="musicText">Vibra Especial</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="relative z-10 max-w-4xl mx-auto px-4 pt-24 pb-20 space-y-16">
+
+    <!-- SECCIÓN HERO -->
+    <section class="text-center space-y-6 pt-4 sm:pt-8 relative z-20">
+      
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-rose-950/90 border border-rose-400/50 text-rose-200 text-xs sm:text-sm font-bold animate-pulse-slow shadow-lg">
+        <span>🔥</span> Nivel de atracción: Fuera de serie
+      </div>
+
+      <h1 class="text-4xl sm:text-6xl font-serif font-extrabold tracking-tight text-white leading-tight text-shadow-glow">
+        Dicen que lo bueno se hace esperar... <br>
+        <span class="bg-gradient-to-r from-rose-400 via-pink-400 to-amber-300 bg-clip-text text-transparent drop-shadow-lg">
+          pero tú te pasaste de hermosa.
+        </span>
+      </h1>
+
+      <p class="text-slate-100 max-w-lg mx-auto text-base sm:text-lg font-medium leading-relaxed drop-shadow-md">
+        Hice este rincón para ti, porque cada foto tuya es una prueba de lo linda que eres y de las ganas que tengo de verte de cerca... 😏
+      </p>
+
+      <!-- Botones de Acción -->
+      <div class="flex flex-wrap items-center justify-center gap-3 pt-4">
+        <button onclick="scrollToSection('galeria')" class="px-7 py-3.5 rounded-full bg-gradient-to-r from-rose-600 via-pink-600 to-rose-600 hover:from-rose-500 hover:to-pink-500 text-white font-bold text-sm sm:text-base transition shadow-lg shadow-rose-600/40 active:scale-95 flex items-center gap-2">
+          <span>Ver tus fotos</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
+        </button>
+
+        <button onclick="openSecretModal()" class="px-7 py-3.5 rounded-full bg-[#1b1427] hover:bg-[#251b36] border border-rose-400/60 text-rose-200 font-bold text-sm sm:text-base transition active:scale-95 flex items-center gap-2 shadow-lg">
+          <span>🔓 Confesión sin censura</span>
+          <span>😈</span>
+        </button>
+      </div>
+
+      <!-- Medidor de Química -->
+      <div class="pt-6">
+        <div class="card-high-contrast max-w-md mx-auto p-5 rounded-2xl text-left">
+          <div class="flex justify-between items-center mb-2.5">
+            <span class="text-xs font-bold uppercase tracking-wider text-rose-300 flex items-center gap-1.5">
+              <span>⚡</span> Medidor de Química
+            </span>
+            <span class="text-sm font-black text-amber-300">100%</span>
+          </div>
+          <div class="w-full bg-black/80 rounded-full h-3.5 overflow-hidden p-0.5 border border-white/10">
+            <div class="bg-gradient-to-r from-rose-500 via-pink-500 to-amber-400 h-full rounded-full transition-all duration-700 w-full shadow-inner"></div>
+          </div>
+          <p class="text-xs text-slate-200 mt-2.5 text-center font-medium">
+            Diagnóstico: Ganas incontrolables de robarte unos buenos besos.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALERÍA DE FOTOS -->
+    <section id="galeria" class="space-y-6 scroll-mt-24 relative z-20">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-2 border-b border-white/15 pb-4">
+        <div>
+          <span class="text-rose-400 text-xs font-black uppercase tracking-widest drop-shadow-md">Catálogo de Belleza</span>
+          <h2 class="text-2xl sm:text-3xl font-serif font-bold text-white text-shadow-glow">Tus Mejores Fotos 📸✨</h2>
+        </div>
+        <p class="text-xs sm:text-sm text-slate-200 font-medium drop-shadow-sm">Toca cualquier foto para ampliarla.</p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-5" id="photosGrid">
+        <!-- Foto 1 -->
+        <div class="group relative overflow-hidden rounded-2xl aspect-[3/4] bg-[#1a1326] cursor-pointer border border-white/20 hover:border-rose-400 transition-all duration-300 shadow-xl" 
+             onclick="openPhotoModal('https://i.ibb.co/4gpWcZKq/IMG-20260829-WA0049.jpg', 'Ese pantalón blanco con el top negro te queda increíble... Tienes un porte que enamora 🔥')">
+          <img src="https://i.ibb.co/4gpWcZKq/IMG-20260829-WA0049.jpg" alt="Foto 1" class="w-full h-full object-cover object-center group-hover:scale-105 transition duration-500">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3.5">
+            <span class="text-xs text-white font-bold flex items-center gap-1.5 drop-shadow-lg">✨ Outfit Perfecto</span>
+          </div>
+        </div>
+        <!-- Foto 2 -->
+        <div class="group relative overflow-hidden rounded-2xl aspect-[3/4] bg-[#1a1326] cursor-pointer border border-white/20 hover:border-rose-400 transition-all duration-300 shadow-xl" 
+             onclick="openPhotoModal('https://i.ibb.co/3yy2bNM5/IMG-20260829-WA0048.jpg', 'Esa selfie con esa miradita pícara me tiene pensando puras cosas ricas contigo... 😉')">
+          <img src="https://i.ibb.co/3yy2bNM5/IMG-20260829-WA0048.jpg" alt="Foto 2" class="w-full h-full object-cover object-center group-hover:scale-105 transition duration-500">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3.5">
+            <span class="text-xs text-white font-bold flex items-center gap-1.5 drop-shadow-lg">✨ Mirada Peligrosa</span>
+          </div>
+        </div>
+        <!-- Foto 3 -->
+        <div class="group relative overflow-hidden rounded-2xl aspect-[3/4] bg-[#1a1326] cursor-pointer border border-white/20 hover:border-rose-400 transition-all duration-300 shadow-xl" 
+             onclick="openPhotoModal('https://i.ibb.co/yn0tNKYQ/IMG-20260829-WA0047.jpg', 'Esa vibra natural y linda en el campus... Imposible no voltear a mirarte.')">
+          <img src="https://i.ibb.co/yn0tNKYQ/IMG-20260829-WA0047.jpg" alt="Foto 3" class="w-full h-full object-cover object-center group-hover:scale-105 transition duration-500">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3.5">
+            <span class="text-xs text-white font-bold flex items-center gap-1.5 drop-shadow-lg">✨ Radiante & Natural</span>
+          </div>
+        </div>
+        <!-- Foto 4 -->
+        <div class="group relative overflow-hidden rounded-2xl aspect-[3/4] bg-[#1a1326] cursor-pointer border border-white/20 hover:border-rose-400 transition-all duration-300 shadow-xl" 
+             onclick="openPhotoModal('https://i.ibb.co/BKc6wKrn/IMG-20260829-WA0045.jpg', 'Ese top café y ese porte al aire libre... Te ves sencillamente espectacular.')">
+          <img src="https://i.ibb.co/BKc6wKrn/IMG-20260829-WA0045.jpg" alt="Foto 4" class="w-full h-full object-cover object-center group-hover:scale-105 transition duration-500">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3.5">
+            <span class="text-xs text-white font-bold flex items-center gap-1.5 drop-shadow-lg">✨ Elegancia Total</span>
+          </div>
+        </div>
+        <!-- Foto 5 -->
+        <div class="group relative overflow-hidden rounded-2xl aspect-[3/4] bg-[#1a1326] cursor-pointer border border-white/20 hover:border-rose-400 transition-all duration-300 shadow-xl" 
+             onclick="openPhotoModal('https://i.ibb.co/kVC8HHLN/IMG-20260829-WA0044.jpg', 'Con ese look estás para invitarte un trago, una plática larga y ver qué pasa después 🍷')">
+          <img src="https://i.ibb.co/kVC8HHLN/IMG-20260829-WA0044.jpg" alt="Foto 5" class="w-full h-full object-cover object-center group-hover:scale-105 transition duration-500">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3.5">
+            <span class="text-xs text-white font-bold flex items-center gap-1.5 drop-shadow-lg">✨ Plan Coqueto</span>
+          </div>
+        </div>
+        <!-- Foto 6 -->
+        <div class="group relative overflow-hidden rounded-2xl aspect-[3/4] bg-[#1a1326] cursor-pointer border border-white/20 hover:border-rose-400 transition-all duration-300 shadow-xl" 
+             onclick="openPhotoModal('https://i.ibb.co/xtYS9PHz/IMG-20260829-WA0043.jpg', 'Con audífonos y esa sonrisa tranquila... Me pregunto qué canción te recuerda a mí 😏')">
+          <img src="https://i.ibb.co/xtYS9PHz/IMG-20260829-WA0043.jpg" alt="Foto 6" class="w-full h-full object-cover object-center group-hover:scale-105 transition duration-500">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3.5">
+            <span class="text-xs text-white font-bold flex items-center gap-1.5 drop-shadow-lg">✨ Modo Relax</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TARJETAS DE CONFESIÓN -->
+    <section class="space-y-6 relative z-20">
+      <div class="text-center">
+        <span class="text-rose-400 text-xs font-black uppercase tracking-widest drop-shadow-sm">Directo y Al Grano</span>
+        <h2 class="text-2xl sm:text-3xl font-serif font-bold text-white text-shadow-glow">Pensamientos que me provocas 💭</h2>
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-4">
+        <!-- Tarjeta 1 -->
+        <div class="card-high-contrast p-5 rounded-2xl relative overflow-hidden hover:border-rose-400 transition">
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-xl bg-rose-500/20 text-rose-300 flex items-center justify-center text-2xl shrink-0 border border-rose-500/30">😏</div>
+            <div class="space-y-1.5">
+              <h3 class="text-base font-bold text-white">Esa sonrisa es trampa</h3>
+              <p class="text-sm text-slate-200 leading-relaxed font-medium">Deberías avisar antes de reírte así, porque uno intenta estar tranquilo y de repente me tienes imaginándome mil cosas contigo.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tarjeta 2 (Hot) -->
+        <div class="card-hot-contrast p-5 rounded-2xl relative overflow-hidden transition group">
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-xl bg-rose-500/30 text-rose-200 flex items-center justify-center text-2xl shrink-0 border border-rose-400/50">🔥</div>
+            <div class="space-y-1.5">
+              <h3 class="text-base font-extrabold text-white">Deseo oficial sin filtro</h3>
+              <p class="text-sm text-rose-100 leading-relaxed font-semibold">Ojalá llegue el día en que nos comamos xd jajaj 😈💋 y que se nos olvide el reloj por completo.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tarjeta 3 -->
+        <div class="card-high-contrast p-5 rounded-2xl relative overflow-hidden hover:border-pink-400 transition">
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-xl bg-pink-500/20 text-pink-300 flex items-center justify-center text-2xl shrink-0 border border-pink-500/30">👀</div>
+            <div class="space-y-1.5">
+              <h3 class="text-base font-bold text-white">Peligrosa tentación</h3>
+              <p class="text-sm text-slate-200 leading-relaxed font-medium">No sé si me gustas más seria o sonriendo, pero en ambas versiones estás para darte todos los gustos del mundo.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tarjeta 4 -->
+        <div class="card-high-contrast p-5 rounded-2xl relative overflow-hidden hover:border-amber-400 transition">
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-xl bg-amber-500/20 text-amber-300 flex items-center justify-center text-2xl shrink-0 border border-amber-500/30">🫦</div>
+            <div class="space-y-1.5">
+              <h3 class="text-base font-bold text-white">Una salida juntos</h3>
+              <p class="text-sm text-slate-200 leading-relaxed font-medium">Tú, yo, buena comida y ver quién aguanta más las ganas sin morderse los labios ni robar un beso primero.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TEST DE SALIDA INTERACTIVO -->
+    <section id="test-citas" class="card-high-contrast p-6 sm:p-8 rounded-3xl border border-rose-500/40 text-center relative overflow-hidden relative z-20">
+      <div class="max-w-md mx-auto space-y-4">
+        <span class="text-rose-400 text-xs font-black uppercase tracking-widest drop-shadow-sm">Plan Perfecto</span>
+        <h2 class="text-2xl font-serif font-bold text-white text-shadow-glow">¿Cuál de estos planes eliges para nosotros? 😏</h2>
+        <p class="text-xs sm:text-sm text-slate-200 font-medium">Toca tu opción favorita y sella el trato:</p>
+
+        <div class="space-y-3 text-left pt-3" id="optionsContainer">
+          <!-- POLLITO -->
+          <button onclick="handleOptionSelect('pollito')" class="w-full p-4 rounded-2xl bg-[#0f0b18] border border-amber-400/50 hover:border-amber-300 hover:bg-[#1a132b] text-white text-xs sm:text-sm font-semibold transition flex items-center justify-between group active:scale-[0.98] shadow-md">
+            <span class="flex items-center gap-3">
+              <span class="text-2xl drop-shadow-md">🍗🍟</span>
+              <span class="text-slate-100 font-bold">Comer pollito con papitas + besos de postre</span>
+            </span>
+            <span class="text-amber-300 text-xs font-extrabold px-3 py-1.5 rounded-lg bg-amber-500/20 border border-amber-400/30 whitespace-nowrap">Elegir ✨</span>
+          </button>
+
+          <!-- PIZZA -->
+          <button onclick="handleOptionSelect('pizza')" class="w-full p-4 rounded-2xl bg-[#0f0b18] border border-white/20 hover:border-rose-400 hover:bg-[#1a132b] text-white text-xs sm:text-sm font-semibold transition flex items-center justify-between group active:scale-[0.98] shadow-md">
+            <span class="flex items-center gap-3">
+              <span class="text-2xl drop-shadow-md">🍕</span>
+              <span class="text-slate-100 font-bold">Comer algo rico + plática que termine en besos</span>
+            </span>
+            <span class="text-rose-300 text-xs font-extrabold px-3 py-1.5 rounded-lg bg-rose-500/20 border border-rose-400/30 whitespace-nowrap">Elegir ✨</span>
+          </button>
+
+          <!-- TRAGOS -->
+          <button onclick="handleOptionSelect('tragos')" class="w-full p-4 rounded-2xl bg-[#0f0b18] border border-white/20 hover:border-rose-400 hover:bg-[#1a132b] text-white text-xs sm:text-sm font-semibold transition flex items-center justify-between group active:scale-[0.98] shadow-md">
+            <span class="flex items-center gap-3">
+              <span class="text-2xl drop-shadow-md">🍷</span>
+              <span class="text-slate-100 font-bold">Unos tragos en un sitio bonito y ver qué fluye...</span>
+            </span>
+            <span class="text-rose-300 text-xs font-extrabold px-3 py-1.5 rounded-lg bg-rose-500/20 border border-rose-400/30 whitespace-nowrap">Elegir ✨</span>
+          </button>
+
+          <!-- HOT -->
+          <button onclick="handleOptionSelect('comernos')" class="w-full p-4 rounded-2xl bg-[#230d1b] border-2 border-rose-500 text-rose-100 hover:bg-[#321326] text-xs sm:text-sm font-semibold transition flex items-center justify-between group active:scale-[0.98] shadow-lg">
+            <span class="flex items-center gap-3">
+              <span class="text-2xl drop-shadow-md">🔥😈</span>
+              <span class="text-white font-black drop-shadow-md">Directo a lo bueno: comernos enteros xd</span>
+            </span>
+            <span class="text-white text-xs font-black px-3 py-1.5 rounded-lg bg-rose-600 border border-rose-400 whitespace-nowrap shadow-md">🔥 Top</span>
+          </button>
+        </div>
+
+        <!-- CAJA DE RESPUESTA DIRECTA -->
+        <div id="choiceFeedback" class="hidden p-5 rounded-2xl bg-[#1d142c] border-2 border-rose-400 text-left space-y-4 shadow-2xl transition-all duration-300 mt-4">
+          <p id="feedbackText" class="text-sm sm:text-base text-white leading-relaxed font-bold"></p>
+          <a id="whatsappBtn" href="#" target="_blank" class="w-full py-4 px-4 rounded-xl bg-gradient-to-r from-rose-600 via-pink-600 to-rose-600 hover:from-rose-500 hover:to-pink-500 text-white font-black text-sm sm:text-base flex items-center justify-center gap-2 transition shadow-xl shadow-rose-600/40 active:scale-95 text-center">
+            <span>💌 Confirmar plan al privado 😏✨</span>
+            <span>👉</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="text-center space-y-6 pt-6 relative z-20">
+      <div class="inline-block p-0.5 rounded-full bg-gradient-to-r from-rose-500 via-pink-500 to-amber-400 shadow-lg">
+        <div class="px-6 py-2.5 rounded-full bg-[#110c1c]">
+          <p class="text-xs sm:text-sm font-bold text-white">¿Te gustó tu página? Déjame saber si te saqué una sonrisa 😉</p>
+        </div>
+      </div>
+      <div>
+        <a href="https://api.whatsapp.com/send?phone=50582269592&text=%C2%A1Hola!%20Acabo%20de%20ver%20la%20p%C3%A1gina%20que%20me%20hiciste%20y%20me%20encant%C3%B3%20mucho%20%E2%9C%A8%F0%9F%98%8F%E2%9D%A4%EF%B8%8F" target="_blank" class="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-500 hover:to-pink-500 text-white font-black text-sm sm:text-base transition shadow-xl shadow-rose-600/40 active:scale-95">
+          <span>💬 Decírtelo al chat privado 😉</span>
+          <span>✨</span>
+        </a>
+      </div>
+      <p class="text-xs text-slate-400 font-semibold pb-4">Hecho exclusivamente para Judi ✨</p>
+    </footer>
+
+  </main>
+
+  <!-- MODALES DE CONFESIÓN Y FOTOS (Iguales y optimizados) -->
+  <div id="secretModal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-md hidden items-center justify-center p-4">
+    <div class="card-hot-contrast max-w-md w-full p-7 rounded-3xl shadow-2xl relative text-center space-y-5">
+      <div class="w-16 h-16 rounded-2xl bg-rose-500/30 text-rose-200 flex items-center justify-center mx-auto text-4xl border border-rose-400/50 shadow-inner">🔥</div>
+      <h3 class="text-2xl font-serif font-black text-white text-shadow-glow">Confesión Directa</h3>
+      <p class="text-white text-base leading-relaxed font-bold">"No te lo voy a negar... me tienes con la mente en ti. Ojalá llegue pronto el día en que estemos solitos y nos comamos a besos sin que nadie nos interrumpa... xd jajaj 😉❤️‍🔥"</p>
+      <div class="pt-3 flex flex-col gap-3">
+        <a href="https://api.whatsapp.com/send?phone=50582269592&text=Ya%20le%C3%AD%20la%20confesi%C3%B3n%20secreta%20de%20la%20p%C3%A1gina...%20y%20me%20gust%C3%B3%20mucho%20%F0%9F%99%88%F0%9F%94%A5" target="_blank" class="w-full py-4 rounded-full bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-500 hover:to-pink-500 text-white font-black text-sm transition shadow-xl shadow-rose-600/40 text-center active:scale-95">Confirmar trato al privado 💌</a>
+        <button onclick="closeSecretModal()" class="w-full py-3 rounded-full bg-[#1b1427] hover:bg-[#271d38] border border-white/20 text-slate-100 font-bold text-sm transition">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="photoModal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-md hidden items-center justify-center p-4" onclick="closePhotoModal(event)">
+    <div class="max-w-lg w-full bg-[#161120] border-2 border-rose-500/40 rounded-3xl overflow-hidden shadow-2xl space-y-4 p-5 relative" onclick="event.stopPropagation()">
+      <div class="relative aspect-[3/4] max-h-[65vh] rounded-2xl overflow-hidden bg-black flex items-center justify-center shadow-inner">
+        <img id="modalImg" src="" alt="Foto" class="w-full h-full object-contain">
+      </div>
+      <div class="p-2 text-center space-y-4">
+        <p id="modalCaption" class="text-rose-200 font-bold text-lg font-serif italic drop-shadow-md"></p>
+        <button onclick="closePhotoModal()" class="px-8 py-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white text-sm font-extrabold transition border border-white/20 active:scale-95">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT -->
+  <script>
+    const MY_PHONE = "50582269592";
+
+    // Navegación y Modales
+    function scrollToSection(id) { document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' }); }
+    function openSecretModal() { document.getElementById('secretModal').classList.replace('hidden', 'flex'); }
+    function closeSecretModal() { document.getElementById('secretModal').classList.replace('flex', 'hidden'); }
+    function openPhotoModal(src, cap) {
+      document.getElementById('modalImg').src = src;
+      document.getElementById('modalCaption').innerText = `"${cap}"`;
+      document.getElementById('photoModal').classList.replace('hidden', 'flex');
+    }
+    function closePhotoModal() { document.getElementById('photoModal').classList.replace('flex', 'hidden'); }
+
+    function handleOptionSelect(optionType) {
+      const fbContainer = document.getElementById('choiceFeedback');
+      const fbText = document.getElementById('feedbackText');
+      const waBtn = document.getElementById('whatsappBtn');
+      let msg = "", exp = "";
+
+      if (optionType === 'pollito') {
+        exp = "🍗🍟 <strong class='text-amber-300'>¡Excelente plan!</strong> Un pollito con papitas bien rico y de postre unos buenos besos. Toca abajo para sellar el trato:";
+        msg = "¡Hola! Elijo el plan de comer pollito con papitas y que los besos corran por tu cuenta 🍗🍟😋";
+      } else if (optionType === 'pizza') {
+        exp = "🍕 <strong class='text-rose-300'>¡Planazo!</strong> Comer rico, platicar y que la noche fluya en besos. Toca abajo para sellar el trato:";
+        msg = "¡Hola! Elijo el plan de comer algo rico y una buena plática que termine en besos 🍕😏";
+      } else if (optionType === 'tragos') {
+        exp = "🍷 <strong class='text-pink-300'>¡Súper bien!</strong> Unos tragos en un sitio bonito para quitar la timidez y ver qué fluye. Toca abajo para sellar el trato:";
+        msg = "¡Hola! Me anoto a los tragos en un lugar bonito y ver qué pasa... 🍷✨";
+      } else if (optionType === 'comernos') {
+        exp = "🔥😈 <strong class='text-rose-400'>¡Uff, sin rodeos como me gusta!</strong> Trato hecho entonces... Toca abajo para avisarme:";
+        msg = "¡Hola guapo! Elijo la opción directa: comernos enteros y no dejar nada xd jajaj 🔥😈💋";
+      }
+
+      fbText.innerHTML = exp;
+      waBtn.href = `https://api.whatsapp.com/send?phone=${MY_PHONE}&text=${encodeURIComponent(msg)}`;
+      fbContainer.classList.remove('hidden');
+      fbContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    // --- SISTEMA ROBUSTO DE AUDIO ROMÁNTICO ---
+    const bgMusic = document.getElementById('romanticMusic');
+    bgMusic.volume = 0.5; // Volumen relajante
+
+    function toggleRomanticMusic() {
+      const btn = document.getElementById('musicToggleBtn');
+      const icon = document.getElementById('musicIcon');
+      const text = document.getElementById('musicText');
+
+      if (bgMusic.paused) {
+        // Mostramos que está cargando
+        icon.innerText = "⏳";
+        text.innerText = "Cargando...";
+        
+        // Reproducimos y manejamos la promesa (evita errores en celulares)
+        bgMusic.play().then(() => {
+          icon.innerText = "🔊";
+          text.innerText = "Sonando...";
+          btn.classList.add('border-rose-400', 'bg-rose-900');
+        }).catch((error) => {
+          console.error("Error al reproducir el audio:", error);
+          alert("Tu teléfono pausó el audio por ahorro de datos o conexión lenta. ¡Toca de nuevo o sube el volumen!");
+          icon.innerText = "🎵";
+          text.innerText = "Música Romántica";
+        });
+      } else {
+        bgMusic.pause();
+        icon.innerText = "🎵";
+        text.innerText = "Vibra Especial";
+        btn.classList.remove('border-rose-400', 'bg-rose-900');
+      }
+    }
+
+    // Efecto de partículas
+    const canvas = document.getElementById('particlesCanvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    class Particle {
+      constructor() { this.reset(); }
+      reset() {
+        this.x = Math.random() * canvas.width; this.y = canvas.height + Math.random() * 20;
+        this.size = Math.random() * 3 + 1; this.speedY = Math.random() * 0.7 + 0.3;
+        this.speedX = (Math.random() - 0.5) * 0.4; this.opacity = Math.random() * 0.4 + 0.15;
+        this.isHeart = Math.random() > 0.75;
+      }
+      update() { this.y -= this.speedY; this.x += this.speedX; if (this.y < -20) this.reset(); }
+      draw() {
+        ctx.fillStyle = `rgba(244, 63, 94, ${this.opacity})`;
+        if (this.isHeart) { ctx.font = `${this.size * 3 + 6}px sans-serif`; ctx.fillText('✨', this.x, this.y); } 
+        else { ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill(); }
+      }
+    }
+    for (let i = 0; i < 24; i++) particles.push(new Particle());
+    function animateParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => { p.update(); p.draw(); });
+      requestAnimationFrame(animateParticles);
+    }
+    animateParticles();
+  </script>
+</body>
+</html>
